@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="梅花易數兩數起卦工具，自動計算主卦、動爻與變卦。" />
+  <title>梅花易數</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <h1 class="eyebrow">梅花易數 · 兩數起卦</h1>
+      <p class="hero-text">
+        第一個數字取上卦，第二個數字取下卦；兩數相加取動爻。
+      </p>
+    </section>
+
+    <section class="panel input-panel" aria-labelledby="input-title">
+      <h2 id="input-title">輸入數字</h2>
+
+      <form id="divination-form">
+        <div class="input-grid">
+          <label>
+            <span>第一個數字</span>
+
+            <input id="number-a" type="number" inputmode="numeric" min="1" step="1" placeholder="例如：13" required />
+          </label>
+
+          <label>
+            <span>第二個數字</span>
+
+            <input id="number-b" type="number" inputmode="numeric" min="1" step="1" placeholder="例如：27" required />
+          </label>
+        </div>
+
+        <button type="submit">開始起卦</button>
+
+        <p id="error-message" class="error-message" role="alert"></p>
+      </form>
+    </section>
+
+    <section id="result-section" class="results hidden" aria-live="polite">
+      <article class="panel copy-result-panel">
+        <div class="copy-result-content">
+          <span class="card-label">文字結果</span>
+
+          <p id="copy-result-text" class="copy-result-text"></p>
+        </div>
+
+        <button id="copy-result-button" class="copy-button" type="button">
+          複製結果
+        </button>
+
+        <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+      </article>
+
+      <div class="summary-grid">
+        <article class="panel summary-card">
+          <span class="card-label">上卦</span>
+          <strong id="upper-trigram"></strong>
+        </article>
+
+        <article class="panel summary-card">
+          <span class="card-label">下卦</span>
+          <strong id="lower-trigram"></strong>
+        </article>
+
+        <article class="panel summary-card accent-card">
+          <span class="card-label">動爻</span>
+          <strong id="moving-line"></strong>
+        </article>
+      </div>
+
+      <div class="hexagram-grid">
+        <article class="panel hexagram-card">
+          <div class="hexagram-heading">
+            <div>
+              <span class="card-label">主卦</span>
+              <h2 id="primary-name"></h2>
+            </div>
+
+            <span id="primary-number" class="hexagram-number"></span>
+          </div>
+
+          <div id="primary-lines" class="hexagram-lines" aria-label="主卦卦象"></div>
+
+          <p id="primary-detail" class="hexagram-detail"></p>
+        </article>
+
+        <article class="panel hexagram-card">
+          <div class="hexagram-heading">
+            <div>
+              <span class="card-label">變卦</span>
+              <h2 id="changed-name"></h2>
+            </div>
+
+            <span id="changed-number" class="hexagram-number"></span>
+          </div>
+
+          <div id="changed-lines" class="hexagram-lines" aria-label="變卦卦象"></div>
+
+          <p id="changed-detail" class="hexagram-detail"></p>
+        </article>
+      </div>
+
+      <article class="panel explanation-panel interpretation-panel">
+        <h2>卦象解讀</h2>
+
+        <div class="interpretation-list">
+          <section class="interpretation-item">
+            <h3>主卦</h3>
+            <p id="primary-meaning"></p>
+          </section>
+
+          <section class="interpretation-item">
+            <h3>動爻</h3>
+            <p id="moving-meaning"></p>
+          </section>
+
+          <section class="interpretation-item">
+            <h3>變卦</h3>
+            <p id="changed-meaning"></p>
+          </section>
+
+          <section class="interpretation-item">
+            <h3>主卦（上）</h3>
+            <p id="upper-meaning"></p>
+          </section>
+
+          <section class="interpretation-item">
+            <h3>主卦（下）</h3>
+            <p id="lower-meaning"></p>
+          </section>
+
+          <section class="interpretation-item">
+            <h3>變卦（上）</h3>
+            <p id="changed-upper-meaning"></p>
+          </section>
+
+          <section class="interpretation-item">
+            <h3>變卦（下）</h3>
+            <p id="changed-lower-meaning"></p>
+          </section>
+
+        </div>
+      </article>
+
+      <!-- 新增的計算過程 -->
+
+      <article class="panel calculation-panel">
+
+        <h2>計算過程</h2>
+
+        <div class="calculation-list">
+          <p id="upper-calculation"></p>
+          <p id="lower-calculation"></p>
+          <p id="moving-calculation"></p>
+          <p id="changed-calculation"></p>
+        </div>
+
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <!-- <p>© 2026 巴巴理恩遊戲有限公司 Barbarian Studios CO., LTD. . 保留所有權利。All rights reserved.</p> -->
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
