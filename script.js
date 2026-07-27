@@ -483,7 +483,10 @@ function displayResult(result) {
   currentCopyText = [
     `主卦：${result.primary.name}`,
     `動爻：第${result.movingLine}爻`,
-    `變卦：${result.changed.name}`
+    `變卦：${result.changed.name}`,
+    "",
+  "以上是根據梅花易數所卜出的卦，請推論這個卦象對於以下這個問題的解釋。",
+  "問題："
   ].join("\n");
 
   copyResultText.textContent = currentCopyText;
