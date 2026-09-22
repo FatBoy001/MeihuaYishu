@@ -194,6 +194,12 @@ input::placeholder {
   min-width: 0;
 }
 
+.copy-result-description {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .copy-button {
   width: auto;
   min-width: 128px;
@@ -355,6 +361,67 @@ input::placeholder {
   line-height: 1.8;
 }
 
+.guide-steps,
+.faq-answer ul {
+  margin: 0;
+  padding-left: 1.5em;
+  color: var(--muted);
+}
+
+.guide-steps li + li,
+.faq-answer li + li {
+  margin-top: 10px;
+}
+
+.guide-panel strong {
+  color: var(--text);
+}
+
+.guide-example {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.faq-item {
+  border-top: 1px solid var(--border);
+}
+
+.faq-item summary {
+  padding: 16px 0;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.faq-item summary::marker {
+  color: var(--gold);
+}
+
+.faq-item summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.faq-answer {
+  padding-bottom: 18px;
+  color: var(--muted);
+}
+
+.faq-answer p {
+  margin: 0;
+}
+
+.faq-answer > * + p,
+.faq-answer > * + ul {
+  margin-top: 12px;
+}
+
+.faq-answer a {
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+
 footer {
   padding: 24px 20px 32px;
   font-size: 11px;
@@ -468,6 +535,7 @@ footer {
   }
 
   .copy-result-panel {
+    grid-template-columns: 1fr;
     padding: 18px;
   }
 
