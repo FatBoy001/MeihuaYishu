@@ -1,14 +1,18 @@
 :root {
-  --bg: #f4efe5;
-  --surface: rgba(255, 253, 248, 0.9);
+  color-scheme: light;
+  --bg: #f6f4ee;
+  --surface: #fffdf8;
   --surface-strong: #fffdf8;
-  --text: #2d2923;
-  --muted: #756c60;
-  --border: rgba(69, 55, 37, 0.15);
-  --accent: #9d3f31;
-  --accent-dark: #733025;
-  --gold: #b98a3f;
-  --shadow: 0 18px 45px rgba(65, 49, 31, 0.1);
+  --text: #263f37;
+  --muted: #686e65;
+  --border: #dddcd1;
+  --accent: #263f37;
+  --accent-dark: #385b4e;
+  --gold: #a57656;
+  --radius-panel: 8px;
+  --radius-control: 8px;
+  --radius-inset: 8px;
+  --shadow: 0 10px 40px #263f3706;
 }
 
 * {
@@ -20,19 +24,11 @@ body {
   min-height: 100vh;
   color: var(--text);
 
-  background:
-    radial-gradient(circle at top left,
-      rgba(185, 138, 63, 0.16),
-      transparent 32rem),
-    linear-gradient(135deg,
-      #f7f1e7 0%,
-      #eee5d7 100%);
-
-  font-family:
-    "Noto Serif TC",
-    "PingFang TC",
-    "Microsoft JhengHei",
-    serif;
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC",
+    "PingFang TC", "Microsoft JhengHei", sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
 }
 
 button,
@@ -41,47 +37,51 @@ input {
 }
 
 .page-shell {
-  width: min(1040px, calc(100% - 32px));
+  width: min(760px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 72px 0 40px;
+  padding: 58px 0 0;
 }
 
 .hero {
-  max-width: none;
   margin-bottom: 30px;
-
+  text-align: center;
 }
 
 .eyebrow {
-  color: var(--accent);
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  white-space: nowrap;
-
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.26em;
 }
 
 h1 {
-  margin: 8px 0 14px;
-  font-size: clamp(2rem, 5vw, 4.2rem);
-  line-height: 1.08;
+  margin: 6px 0;
+  padding-left: 0.18em;
+  font-family: "Noto Serif TC", "Songti TC", serif;
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  line-height: 1.6;
 }
 
 h2 {
-  margin-top: 0;
+  margin: 0 0 20px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
 }
 
 .hero-text {
+  margin: 0;
   color: var(--muted);
-  font-size: 1.08rem;
-  line-height: 1.8;
+  font-size: 14px;
 }
 
 .panel {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 24px;
+  border-radius: var(--radius-panel);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(12px);
 }
 
 .input-panel,
@@ -98,15 +98,15 @@ h2 {
 label span {
   display: block;
   margin-bottom: 9px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 input {
   width: 100%;
-  padding: 16px 18px;
+  padding: 12px 16px;
 
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: var(--radius-control);
 
   background: var(--surface-strong);
   color: var(--text);
@@ -122,49 +122,47 @@ input:focus {
   border-color: var(--gold);
 
   box-shadow:
-    0 0 0 4px rgba(185, 138, 63, 0.15);
+    0 0 0 4px rgba(165, 118, 86, 0.12);
 }
 
 button {
-  width: 100%;
-  margin-top: 20px;
-  padding: 16px 20px;
-
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 24px auto 0;
+  padding: 12px 32px;
   border: 0;
-  border-radius: 14px;
-
-  background:
-    linear-gradient(135deg,
-      var(--accent),
-      var(--accent-dark));
-
-  color: white;
-  font-weight: 800;
+  border-radius: var(--radius-control);
+  background: var(--accent);
+  color: var(--surface);
+  font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
-
-  box-shadow:
-    0 12px 24px rgba(115, 48, 37, 0.24);
-
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s,
-    opacity 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
 
 button:hover {
+  background: var(--accent-dark);
   transform: translateY(-1px);
-
-  box-shadow:
-    0 15px 28px rgba(115, 48, 37, 0.28);
 }
 
 button:active {
   transform: translateY(0);
 }
 
+button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 5px;
+}
+
+input::placeholder {
+  color: var(--muted);
+  opacity: 0.75;
+}
+
 .error-message {
-  min-height: 1.5em;
-  margin-bottom: 0;
+  margin: 12px 0 0;
+  text-align: center;
   color: #b42318;
 }
 
@@ -176,15 +174,17 @@ button:active {
   display: none;
 }
 
+.error-message:empty {
+  display: none;
+}
+
 /* 複製文字結果區塊 */
 
 .copy-result-panel {
   display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  text-align: center;
-  gap: 18px;
+  gap: 12px;
 
   margin-bottom: 20px;
   padding: 22px 24px;
@@ -203,11 +203,14 @@ button:active {
 
 .copy-status {
   grid-column: 1 / -1;
-  min-height: 1.4em;
   margin: -6px 0 0;
 
   color: var(--accent);
   font-size: 0.92rem;
+}
+
+.copy-status:empty {
+  display: none;
 }
 
 /* 上卦、下卦、動爻 */
@@ -219,33 +222,30 @@ button:active {
 }
 
 .summary-card {
-  padding: 22px;
+  padding: 20px;
+  text-align: center;
 }
 
 .summary-card strong {
   display: block;
   margin: 8px 0 5px;
-  font-size: 1.45rem;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 .card-label {
   color: var(--accent);
   font-size: 0.82rem;
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: 0.16em;
 }
 
 .accent-card {
-  background:
-    linear-gradient(135deg,
-      rgba(157, 63, 49, 0.98),
-      rgba(115, 48, 37, 0.98));
-
-  color: white;
+  background: #edf1eb;
 }
 
 .accent-card .card-label {
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
 }
 
 /* 主卦與變卦 */
@@ -270,12 +270,14 @@ button:active {
 
 .hexagram-heading h2 {
   margin: 7px 0 0;
-  font-size: 1.8rem;
+  font-family: "Noto Serif TC", "Songti TC", serif;
+  font-size: 28px;
+  font-weight: 500;
 }
 
 .hexagram-number {
   color: var(--muted);
-  font-size: 1.05rem;
+  font-size: 14px;
   white-space: nowrap;
 }
 
@@ -284,7 +286,7 @@ button:active {
   flex-direction: column;
   gap: 11px;
 
-  width: min(240px, 100%);
+  width: min(200px, 100%);
   margin: 30px auto;
 }
 
@@ -292,7 +294,7 @@ button:active {
   display: flex;
   justify-content: center;
   gap: 18px;
-  height: 15px;
+  height: 12px;
 }
 
 .line.yang::before {
@@ -312,19 +314,14 @@ button:active {
 
 .line.moving::before,
 .line.moving::after {
-  background: var(--accent);
-}
-
-.line.moving {
-  filter:
-    drop-shadow(0 2px 4px rgba(157, 63, 49, 0.24));
+  background: var(--gold);
 }
 
 .hexagram-detail {
   margin-bottom: 0;
   color: var(--muted);
   text-align: center;
-  font-size: 1.05rem;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -340,12 +337,12 @@ button:active {
 }
 
 .interpretation-item {
-  padding: 16px 18px;
+  padding: 12px 16px;
 
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius-inset);
 
-  background: rgba(255, 255, 255, 0.48);
+  background: transparent;
 }
 
 .interpretation-item h3 {
@@ -359,7 +356,9 @@ button:active {
 }
 
 footer {
-  padding: 20px 16px 42px;
+  padding: 24px 20px 32px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
   color: var(--muted);
   text-align: center;
 }
@@ -381,14 +380,14 @@ footer {
   margin: 0;
   padding: 15px 18px 15px 46px;
   border: 1px solid var(--border);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.48);
+  border-radius: var(--radius-inset);
+  background: transparent;
   line-height: 1.8;
 }
 
 .calculation-list p::before {
   position: absolute;
-  top: 15px;
+  top: 19px;
   left: 17px;
   display: flex;
   align-items: center;
@@ -399,7 +398,7 @@ footer {
   background: var(--accent);
   color: white;
   font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .calculation-list p:nth-child(1)::before {
@@ -418,18 +417,71 @@ footer {
   content: "4";
 }
 
-@media (max-width: 720px) {
+/* 支援時使用超橢圓，讓直邊與轉角平順銜接；其他瀏覽器保留圓角。 */
+@supports (corner-shape: squircle) {
+  :root {
+    --radius-panel: 8px;
+    --radius-control: 8px;
+    --radius-inset: 8px;
+  }
+
+  .panel,
+  input,
+  button,
+  .interpretation-item,
+  .calculation-list p {
+    corner-shape: squircle;
+  }
+}
+
+@media (max-width: 520px) {
   .page-shell {
-    padding-top: 42px;
+    padding-top: 34px;
+  }
+
+  h1 {
+    font-size: 34px;
   }
 
   .input-grid,
-  .summary-grid,
   .hexagram-grid {
     grid-template-columns: 1fr;
   }
 
+  .input-panel,
+  .explanation-panel,
+  .hexagram-card,
+  .calculation-panel {
+    padding: 22px 18px;
+  }
+
+  .summary-grid {
+    gap: 8px;
+  }
+
+  .summary-card {
+    padding: 16px 8px;
+  }
+
+  .summary-card strong {
+    font-size: 17px;
+  }
+
+  .copy-result-panel {
+    padding: 18px;
+  }
+
   .hexagram-heading {
     align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button {
+    transition: none;
+  }
+
+  button:hover {
+    transform: none;
   }
 }
