@@ -180,8 +180,10 @@ button:active {
 
 .copy-result-panel {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
+  justify-items: center;
   align-items: center;
+  text-align: center;
   gap: 18px;
 
   margin-bottom: 20px;
@@ -190,15 +192,6 @@ button:active {
 
 .copy-result-content {
   min-width: 0;
-}
-
-.copy-result-text {
-  margin: 10px 0 0;
-  white-space: pre-line;
-
-  font-size: 1.05rem;
-  font-weight: 700;
-  line-height: 1.8;
 }
 
 .copy-button {
@@ -434,14 +427,6 @@ footer {
   .summary-grid,
   .hexagram-grid {
     grid-template-columns: 1fr;
-  }
-
-  .copy-result-panel {
-    grid-template-columns: 1fr;
-  }
-
-  .copy-button {
-    width: 100%;
   }
 
   .hexagram-heading {
